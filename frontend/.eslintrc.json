@@ -1,0 +1,36 @@
+{
+	"extends": ["marine/prettier/node", "marine/prettier/react", "plugin:@next/next/recommended"],
+	"parserOptions": {
+		"project": "./frontend/tsconfig.eslint.json"
+	},
+	"env": {
+		"node": true,
+		"browser": true,
+		"es2021": true
+	},
+	"plugins": ["unused-imports"],
+	"rules": {
+		"@typescript-eslint/naming-convention": "off",
+		"react/react-in-jsx-scope": "off",
+		"@typescript-eslint/restrict-template-expressions": "off",
+		"@typescript-eslint/no-unsafe-member-access": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/no-unnecessary-condition": "off",
+		"@typescript-eslint/ban-ts-comment": [1],
+		"@typescript-eslint/no-unsafe-assignment": "off",
+		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/no-unsafe-call": "off",
+		"@typescript-eslint/no-unsafe-return": "off",
+		"react/prop-types": "off",
+		"react/jsx-key": "off",
+		"arrow-body-style": "off",
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".tsx"]
+			}
+		],
+		"no-console": "warn",
+		"unused-imports/no-unused-imports": "error"
+	}
+}
