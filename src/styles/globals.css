@@ -1,0 +1,43 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.ant-layout-header {
+	border-bottom: 1px solid #e8e8e8 !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+	background-color: rgb(231, 231, 231) !important;
+}
+
+.sidemenu > * > .ant-menu {
+	border-right: 1px solid #e8e8e8 !important;
+	background-color: #f5f6f8 !important;
+}
+
+.ant-layout-sider-zero-width-trigger {
+	background: #7c7c7c !important;
+	top: 0 !important;
+}
+
+.ant-typography {
+	position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+	.site-layout-background {
+		margin-top: 20px !important;
+	}
+}
