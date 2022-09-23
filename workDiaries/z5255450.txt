@@ -1,0 +1,36 @@
+Week 1
+
+Our group was formed and we spent the initial week discussing what project ideas we should work on. After much discussion we decided to do an altered
+version of the event manager. We also spent a while talking about the various tech stacks or libraries we could use and ended up agreeing on using
+mongodb as our database storage with frontend being written in React and backend in nodejs. Typescript is also being utilised. I was in charge of setting
+up the inital backend and providing the structuring. I chose to use mongoose for connecting our mongodb database with node express. Most of the week was
+spent working on setting up this backend and also creating our jira board issues and proposal.
+
+Week 2 
+Was spent on mainly continuing to research about the various libraries that could potentially be utilised in the backend/ further generation of the directory
+structure and routes setup. Our group also spent more time on fleshing out our proposal and populating our jira board with user stories and acceptance criterias. Also worked on some balsamiq for our proposal. Started creating endpoints with middleware for some basic features such as obtaining a user.
+
+Week 3
+Started the first sprint! I spent the week working on creating express endpoints to create a user account, create an event and obtain events and users/ single user. Afterwards I started experimenting with the frontend to mock my login page and attach some endpoints to see how data would flow. Also helped the rest of the team understand how the backend works and did a walkthrough with the various libraries I chose to use for validation purposes such as zod. I created a token validation function in order to provide some sort of security, i.e the general public can't just call an endpoint and obtain data, also finished the create user flow including hashing the sent password.
+
+Week 4
+Login screen really coming together, with both create user and sign in working. The ui also looks great although it is subject to change it does the job for our upcomming 
+demo. Had consistent stand ups during this week to aid the other members and also get unblocked aswell. Finished the login screen.
+
+Week 5
+Demo'd the first iteration of our project and realised some issues with login so I am currently spending a day of this week working on fixing the validation aspect and refactoring the login backend. Split up and assigned a ton of backlog user stories on jira to each other with the team for sprint 2. Helped fixed loading our token dynamically and encoding it so that we can access endpoints properly.
+
+Week 6
+Worked on email verification for the majority of the first sprint alongside attempting to create a middleware on the frontend that would encode our token in base64 and attach it to the header of the request. I managed to finish the email verification process properly, however the middleware is still not working which is very interesting. Spent majority of the week doing reset password and verify email validation for the login process. 
+
+Week 7 
+Finished reset password completely, ironing out all of the bugs. Got started on profile page. Halfway through we decided that it was better that Steven worked on the profile page and I get started on our user chat. The rest of the week was spent testing out different api libraries whilst also trying to see if I could create my own chat messenger. 
+
+Week 8
+Most of this week was spent on architecting the backend in preparation of the chat function. Unfortunately (or luckily) 2 days in I realised creating my own chat would take up a lot of time, so I switched over to using the chat engine api to create our chat. I realised that its core functionality was not what we wanted for our meetic site, hence the week was spent altering the backend to work in tandem to the api. I also created my own chat engine components to slot it in, in order to be able to search through users. 
+
+Week 9 
+The first few days were spent playing around the UI for the chat engine implementation and the last few days, with the help of Steven, was utilised to finish up the chat engine! I also connected our friends backend to the create event page and changed our dbInit script to initilise users for the chat engine. Our team found some bugs in chat during a test run and so I spent a day fixing up the issue pertaining to loading time and search for the chat engine.
+
+Week 10
+Made some final bug fixes such as preventing false logins which is where a user will click on the verification link and this would log them in (i.e populates the header with the user information but does not actually store a cookie). Also made some database changes for our demo and some aesthetic changes here and there). Did some documentation changes and proposal.

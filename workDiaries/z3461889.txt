@@ -1,0 +1,93 @@
+Week 1
+
+Group formed. I wrote the problem domain, existing work/systems, and their drawbacks sections of the proposal. I also discussed with the team all available 
+software tools and libraries that we can use for the project.
+
+Week 2
+
+I wrote the 'Describes how some of the defined user stories to be implemented provide novel functionality compared to existing systems' section of the proposal. 
+I also spent time with our group to discuss our potential project objectives in writing out our user stories and acceptance criteria on our Jira board.
+
+Week 3
+
+* Following discussion with my teammates, I have assigned myself to take responsibility for our underlying email system and the QR code system for the first 
+  sprint during weeks 3 and 4.
+* I finished implementing the underlying email system for all of the notifications on our system. I finished writing the code to send an email to the registered 
+  user upon successful account creation along with the email template to be sent (User story JP-72). I have also written the first version of the code to send an 
+  email to the user upon a successful event booking transaction along with the email template to be sent (JP-63).
+* The QR code system (JP-74) is planned for next week.
+
+Week 4
+
+* As evidenced in the last work diary entry, the plan for this week was the implementation of the QR code system (JP-74) in addition to making sure the user 
+  stories I was assigned to are able to be demonstrated in progressive demo A.
+* I finished writing the final version of the code to send an email to the user upon a successful event booking transaction along with the email template to be
+  sent (JP-63) and the code to display a ticket with a QR code in addition to ticket fields which are fetched from our backend.
+* I faced some non-technical obstacles during this week due to my progress being blocked and reliant on the ticket backend which was set to be completed by 
+  another member. The issue was discussed in our standups during the week and was a key point of improvement for our retrospective. 
+* Nevertheless, I tried to overcome this obstacle by making adjustments to start experimenting with the code for our underlying payment system facilitated via 
+  the PayPal API (JP-90) for the next sprint to ensure the overall project progress is not significantly affected.
+* Discussion and allocation of responsibilities for the next sprint are planned at the start of next week.
+
+Week 5
+
+* Following discussion with my teammates, I have assigned myself to take responsibility for our ticket system (JP-22, JP-89, JP-107) and payment system (JP-90) 
+  for the second sprint during weeks 5 and 7.
+* I finished making a change to the QR code implementation to improve demo feasibility. I also finished the frontend implementation of the ticket with full 
+  backend integration (JP-89) in addition to the implementation of the cancellation of tickets (JP-22). Furthermore, I implemented the 'My Tickets' tab where 
+  a user is able to see all the tickets that are in their ownership (JP-107).
+* I was able to finish everything I planned for this week and thus have good overall project progress towards my individual commitment for the second
+  sprint. I aim to continue to work at this pace to overcome any obstacles that may arise and affect our team and make adjustments as necessary to ensure the
+  success of our project.
+* The payment system (JP-90) is planned for next week.
+
+Week 6
+
+* As evidenced in the last work diary entry, the plan for this week was the implementation of the payment system (JP-90) in addition to making sure the user 
+  stories I was assigned to are able to be demonstrated in progressive demo B.
+* I finished writing the final version of the code to integrate the PayPal payment system (JP-90) into our project where a user is forwarded to checkout a paid
+  event booking via PayPal which then attaches a PayPal Transaction ID onto a user's ticket. Furthermore, I implemented the refund system (JP-114) and email 
+  system (JP-73) for when an event is cancelled where all tickets associated to a cancelled paid event are refunded and attendees are emailed of the cancellation 
+  of the event.
+* Akin to the previous week, I was able to finish everything I planned for this week and thus have continued to have good overall project progress towards my 
+  individual commitment for the second sprint. Again, I aim to continue to work at this pace to overcome any obstacles that may arise in our final sprint to 
+  ensure the success of our project.
+* Discussion and allocation of responsibilities for the final sprint are planned at the start of next week.
+
+Week 7
+
+* Following discussion with my teammates, I have assigned myself to take responsibility for the event recommendation system (JP-109) and the friend 
+  recommendation system (JP-75) for the final sprint during weeks 7 and 10.
+* I finished writing the final version of the code to recommend events to the user (JP-109) into our project where a logged in user will be recommended
+  events based on the types of events that they have attended in the past, the hosts of the events that they've attended in the past and similar descriptions
+  of events. This is implemented through the use of the Recombee recommendation engine where users and events are synchronised and their interactions are
+  sent to the engine facilitated through custom recommendation logic which provides us with recommendations.
+* I was able to finish a significant component of the project that being the recommendaton system as planned and thus have good overall project progress
+  towards my individual commitment for the final sprint. I aim to continue to work at this pace to finish the remaining recommendation system involving
+  friends and set some time to overcome any obstacles that may arise and affect our team and make adjustments as necessary to ensure the success of our 
+  project.
+* The friend recommendation system (JP-109) is planned for next week.
+
+Week 8
+
+* As evidenced in the last work diary entry, the plan for this week was the implementation of the friend recommendation system (JP-75).
+* I finished writing the final version of the code to recommend friends to the user (JP-75) where a logged in user will be recommended friends based on the 
+  types of events that they specify that they are interested in, events that they've attended in the past and having mutual friends. This is implemented 
+  through the use of the Recombee recommendation engine where users are synchronised and their interactions are sent to the engine facilitated through custom 
+  recommendation logic which provides us with recommendations. Furthermore, I added the functionality for an event host to be able to broadcast a message 
+  through an email to all bookees of their event to facilitate communication if necessary.
+* I was able to finish another significant component of the project that being the friend recommendaton system as planned and thus have met my individual 
+  commitment for the final sprint. I aim to continue to work at this pace until the end of the project to overcome any obstacles that may arise and make 
+  adjustments as necessary.
+* For next week, I plan to write my sections of the report, fix any issues with the features i have implemented if they arise, and work on any additional 
+  functionality we may pursue if necessary.
+  
+  Week 9
+
+* As evidenced in the last work diary entry, the plan for this week was to write my sections of the report, fix any minor issues of the features I have
+  implemented and work on any minor additional functionalities as necessary.
+* In terms of the report, I finished writing the sections of the report for the payment system(RSVP/Purchase ticket), email system, event recommendation
+  system and the friend recommendation system. I also wrote my sections on the usage of third-party libraries and wrote two implementation challenges 
+  regarding the use of PayPal API and Recombee.
+* In terms of the project, I added pagination to the social page and implemented modals to show all friends and all invites. Furthermore, I also revamped 
+  the user interface of the user profile modal that we had previously.

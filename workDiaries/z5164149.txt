@@ -1,0 +1,59 @@
+Week 1
+Group was formed. I was named the scrum master for the group. We were initially hesitant as to what we decided to do, so we designated a later time to discuss what project we
+were going to build and what functionalities we wanted to implement. 
+On 16/02/2022, we had a meeting deciding what project we wanted to do. We decided on a event system with our twists. I decided with the group what I wanted to complete by the end of the week.
+I chose to finish writing the epics with user stories and an ER diagram to be complete by the end of the week.
+
+At the meeting on 19/02/2022, we discussed our roles and the tech stack we were going to use. We sort of chose MongoDB but it's still in debate. Matthew could not show up to the meeting due to contracting covid.
+For the first sprint starting on 21/02/2022,
+Andrew chose to write up the background for the proposal, Steven chose to work on the frontend and Ricky chose to work on the backend with potentially working database.
+Steven wrote up our custom project proposal and submitted it.
+
+Week 2
+Attended the tutorial to talk about our issues and questions for the proposal and situation around Github. I had redone our backlog to only include user stories related to our implementation, set to start in Week 3.
+We have assigned sections of the proposal such that it can be completed by the end of the week. I assigned myself to help Ricky with creating mock data for the database. We'll be working together as a group on Balsamiq to create wireframes.
+The ER diagram could not be completed last week because we felt that the ER diagram was missing elements and so we decided we'd work on the diagram as we progress.
+We decided on a next meeting on 26/02/2022 to discuss allocation of coding tasks.
+
+At our meeting, we talked about the database and what we wanted to achieve in the first sprint. The database had the framework and some data in it and i was tasked to create the tickets and venues with mock data. Everyone started to get assigned to do their work for the sprints.
+I wanted to work on presenting the events on the home page, Ricky was tasked for the login/registration, Steven worked on the frontend design, Andrew worked on the email system and Matthew is also going to work on the frontend.
+
+Week 3
+Attended the tutorial to have some questions about our proposal and what codings tasks to do. Matthew was missing last week so he was assigned to do some wireframes and assigned him to do QR codes for the emails. I added new user stories to add basic implementation and additional features. 
+Our next meeting will be on Saturday 7pm. I expect our proposal to be done at 90% by Friday.
+
+We had a standup meeting on Thursday to talk about progress. The wireframes were slow to complete and the next completion time is potentially Saturday. I asked about how I could have the JSON object on events show up in the frontend. Steven had set that up for me so I could start working
+on having the events show up properly on the Home page. I also took up completing the System Architecture section so that Ricky can focus on coding. 
+
+Sunday was the last standup we had. As a group, we worked together to work on completing and was submitted on 06/03/2022 by myself.
+
+Week 4
+I worked on the Home page. I added components to the page itself and asked help from Steven for any questions I had. I worked on the search bar and got it working however there had been some additional features we wanted to add to the search bar such as the ability to search by date, locaiton and type of event.
+Steven helped me with refactoring my code to make it appear neater and also helped with the search functionality where I struggled. 
+
+Week 5
+After the demo, we worked together on Retrospective A and splitting up user stories for sprint 2 that started on the same day. I wanted to work on reviews JP-28, JP-23, JP-86, JP-65.
+I started work on JP-23. I encounted a few challenges. It was my first time using Modal and didn't understand how to bind the form values to the Modal submit button. I got it working in the end.
+
+Week 6
+Since the last standup on the 20/03/2022, I have completed the host dashboard so that it shows the events the host has created and I completed an upcoming events page for the user to track what events are coming up that they bought tickets for.
+I also completed a past events page for the user so they can review the event after the start date. The Modal submit button now worked such that I could submit reviews into the database. However, currently there is no way to view the reviews by the host, so I'm working on that.
+I told my group members that I might be slowing down for progressing in the project due to other commitments such as another project that needed to be addressed.
+Our next stand up is on the 22/03/2022. 
+At the stand up, I was able to showcase my work. Steven asked about a button that switches between upcoming and past pages so he implemented a skeleton for me so I can turn the pages into components. I had it working the same day.
+
+Week 7
+On Monday, I worked on token validator bug fixes.
+On Tuesday and Wednesday, I worked on creating a notification for when a user submits a review. I also worked on JP-86 and JP-65, and are ready to be presented at standup. 
+After the standup, i recognised an issue, in that the host average rating was incorrectly calculated and that was resolved on the same day. I also created Retrospective B template and 
+made preparations for the Project Report.
+
+Week 8
+On Monday, we had a small stand-up to have a pre-demo before our actual demo. I wanted to address the report as to what we wanted to include our report and had some questions for the group.
+Due to our loaded sprint 2 largely completed, sprint 3 was relatively laxed and mostly involved implementation of novel features and UI updates. I have written user documentation for installation and configuration.
+I had also written descriptions of funtionalities I had implemented, Event Search and Review System.
+I formatted the user documentation and added steps for the features in our system.
+
+Week 9
+11/04/2022: I formatted the user documentation. Installation manual for the report is complete. User manual is largely completed excepted for a missing feature. Wrote the overview. Created a README.txt
+that includes the installation manual, method of submission and what environment we tested our system. Currently working on a minor feature of disabling the review button when a user submits a review. Also worked on a backlog assigned me, which was the disable review button when a user submits a review.

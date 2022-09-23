@@ -1,0 +1,59 @@
+Week 1:
+Group was formed and we decided to build an innovative event management/social media platform. I was responsible for setting up the Frontend and deciding on the frameworks 
+and libs we would use. I decided that we would go with Typescript to maintain consistency across the frontend and backend. I also installed nextjs, antd and react on 
+the frontend and architectured the folder structure. For quality assurance, I added Jest and wrote up an ESLint config which we would use to test and enforce better coding
+practices.
+
+Week 2:
+I built out the base layout of the app including headers, colour schemes and structure of pages. I created a balsamiq for the team and prototyped some of the 
+UIs we would be building. Our group started working together to write up the project proposal and creating the Jira board with user stories and acceptance criteria. On the backend
+I worked with Ricky to finalise some of the backend architecture. Ran into some CORs errors and other issues related to storing user state, found solutions by using a cors framework and
+integrating a cookie library. Set up some examples on the frontend including helpers and fetchers to talk to the backend.
+
+Week 3:
+First sprint started. I decided to start on dealing with image uploads. Initially, I tried to store photos directly on our backend as base64 strings but this wasn't 
+feasable for large event cover photos as it was too large (over 300,000 chars). I then looked for alternative solutions and integrated a Cloud service (Cloudinary) to our platform 
+so that we could store large images to be used for event cover photos and profile pictures. Then I worked on building an image upload widget that connected to the
+Cloudinary api so that we can upload/remove images directly on our app. I worked closely with Andrew to finish a bunch of wireframes before our proposal was due in week 4. 
+
+Week 4:
+Early in the week I finished building out the create event page ui then later in the week I built out the controller for creating events, just needed login to be complete to connect events with a host. 
+I worked with Jack and helped build out a multi search bar on the homepage and plan some more ui including a massive header we'll be adding later. We ran into some issues related to accessing the cookies
+across all the pages. Later in the week mostly consisted of code reviews before our demo and a dryrun of our app. 
+
+Week 5:
+Start of second sprint. After login was complete, I connected the user to create event. We demo'd our first iteration of Meetic and planned our next sprint together afterwards. Early in the
+week I worked on creating a friends list, invite list and recommended friends list with different cards for each. I also worked on updating our ticket model. Initially,
+we were going to have one invite model for all invite types with a 'type' field to categorise. However, this would introduce unnecessary fields that aren't used across
+all the invites (i.e event, host) so instead I seperated them into 3 different invites - Event, Friend and Trade. Later in the week I worked on the friend and invite
+list to have it dynamically load.
+
+Week 6:
+Early in the week I worked on building out the backend for the socials page, this included all the model and controller updates so everything can be fetched on the
+frontend. Later in the week I built out the invite system which allows hosts to invite their friends when they are creating a private event. I also spent a bit of time
+refactoring some of the code in our repo which had errors and built out a switch to swap between tables which will be used across our platform such as toggling between
+past/upcoming events. 
+
+Week 7:
+This was the beginning of our third and final sprint. Early in the week I fixed several major bugs including Token parsing, host components infinitely rendering and an invite bug which
+allowed users to send several invites to the same user multiple times. Later in the week I built out the friends list functionality which included sending friend requests, accepting requests and deleting friends.
+I created a skeleton modal which would be populated later once the profile page was complete. I then started building out the profile page starting with an upload 
+avatar feature which stored user avatars on Cloudinary as well so that other users would be able to see them. After building out the avatar feature, I built out the rest of the profile page which enabled users to edit their profile including: status, personal information,
+preferences so that other users would be able to connect with them or find them through common interests.
+
+Week 8:
+Early in the week I helped improve the friend events render on the homepage in the section which showed which events the users friends were attending. I also revamped the landing page which features an animated background and catchy headline to attract new users. Later in 
+the week I continued working on many features, updates and bug fixes which includes:
+- Improved logout flow, I added a loading screen and wait to ensure that cookies are cleared and the user would be redirected to the login page
+- I updated the ui of the checkout page, following my updated animated background I decided to bring this to the ticket page to make it more appealing
+- There was a bug in the login page where the 'browse as guest' button was badly positioned which distorted the rest of the login page. I fixed the styling of this page to make sure the design and user experience matched our expectations
+  as planned in the balsamiq
+- Create event had several bugs relating to inviting friends since it wasn't rendering the names properly sometimes and invites werent sent out properly sometimes as well. I managed to fix this by updating the controller to pass in the correct
+  data.
+
+Week 9:
+Most of this week was spent writing up the report sections particularly for the features i built including Social page, parts of the home page, create event, profile page, friends, invites and the frontend architecture. I also spent some time
+going through the app, looking for bugs and updating the ui. I wrote out some unit tests using Jest and an end to end test using cypress to ensure our platform works smoothly. I also updated the ui of the homepage by updating the cards to
+be displayed in a carousel instead which made pagination alot smoother than flicking through tables. I also finalised the guest side of browsing and ensured that the home page won't render any past events or private events since the 
+user isn't logged in. Later in the week we started preparing for our presentation so I ran through our app a few times to check that there weren't any bugs and prepared some parts to demo during our presentation.
+

@@ -1,0 +1,609 @@
+NOTE: 
+
+Over the course of this project, I followed our tutor's advice and became much more aware of my entries in this work diary. At first, entries are merely a recount of what was completed in bullet point form and reminders for myself of implementation details. However, over the duration of development time, the entries become fledged-out, more self-reflective, and a more accurate description of the trials and tribulations involved in some of the development features I worked on. 
+
+In the interest of preserving this documentation of personal growth, I have kept earlier entries of this work diary mostly unchanged, warts and all.
+
+
+-----------------------------------------------------------------------------------------------------
+WEEK 1:
+-----------------------------------------------------------------------------------------------------
+
+* Met my team:
+    - Andrew Chung, Steven Lam, Jack Vuong, Ricky Gian
+* We met and spoke about which kind of project we would like to do. We brainstormed a couple options and talked about what type of development (frontend, backend, database, etc.) each of us would like to focus on. 
+* We are gravitating toward using an existing/preset project as a template for ours and adding our own unique twist to it in an effort to avoid a project that is too similar to other groups.
+
+
+-----------------------------------------------------------------------------------------------------
+Week 2:
+-----------------------------------------------------------------------------------------------------
+
+* I floated the idea of doing an event management system with a social media twist to my team. Everyone seemed to like the idea and with a little workshopping, it seems as though we've found our project concept.
+* I caught covid in Week 1 and am in the middle of what I hope is the worst of it. I haven't been able to attend most of my classes or watch lectures this week. I'm worried about how far behind I am on uni work considering I have many other obligations not related to uni.
+
+
+-----------------------------------------------------------------------------------------------------
+Week 3:
+-----------------------------------------------------------------------------------------------------
+
+* I have applied for special consideration for a couple tasks that are due in the early weeks of term. This project is not considered because it is group work, and the other team members have been able to begin work on the project proposal without me until now.
+
+* I am (mostly) better now and am ready to get back into work. I have a lot of work to catch up on from Week 1 and Week 2 for my other two subjects so unfortunately I haven't been able to put much time into preparing our project proposal so far.
+
+* Sprint 1 began this week.
+
+* I completed some wireframes using Balsamiq and helped assemble the project proposal.
+
+-----------------------------------------------------------------------------------------------------
+Week 4:
+-----------------------------------------------------------------------------------------------------
+
+* Ricky has helped me set up the development flow for our application. I had a bit of trouble installing our database with mongodb at first, but everything seems to be working now.
+
+* Updated event_page branch to reflect changes to master.
+
+* Fixed compile issue in master branch.
+
+* Worked through mongodb quick start guide.
+
+* Brief look at Ant Design. Will need more attention later.
+
+* Stumbled with next/router usage to link new pages. Not obvious how routes connect to components like the route='', component='' format of react-router. The following is what I have learned about routes in the backend of our project.
+
+    - frontend/src/lib/utils/paths.ts might sound promising, but it is just a stub:
+export const foo = 'hi';
+
+    - routes.ts in the backend connects endpoints.
+
+* Downloaded/created account for Postman to interact with endpoints.
+Eg. GET http://localhost:2102/status
+Don't know to provide tokenValidator yet, will look into later.
+
+* To make a new page:
+create folder named [dummy] with file index.tsx inside and stub react code:
+
+----------------------------------------
+const viewEvent = () => {
+    return (<p>dummy</p>)
+};
+
+{
+  console.log("dummy");
+}
+
+export default viewEvent;
+----------------------------------------
+
+For more detail/advanced use cases:
+https://medium.com/nextjs/how-to-create-pages-in-next-js-fcc4891ce3a4
+
+* event.controller.ts will be useful to look at later. Handles events.
+
+* code to link to page:
+onClick={()=> {router.push('/viewEvent')}}
+
+* todo: re-learn props
+
+* Revisited ant design. Now adding components to viewEvent page.
+
+* Added: Title, subtitle for date, placeholder cover photo
+
+* Worked on homepage. Now links correctly to individual event view.
+
+* colour scheme notes: C43444 is Meetic Red
+
+* Completed the UI scaffold for viewEvent page. Must now look into functionality (get params from url, interact with backend, make page components modular).
+
+* To get parameters from URL, read this blog post, still trying to understand:
+https://karoldabrowski.com/blog/getting-parameters-from-url-in-a-react-application/
+
+* UI todo: Make cover photo crop. Make cover photo right align. Make left divider look consistent with body items.
+
+* Note: use logger.info for backend logging instead of console.log, it is clearer from the console UI
+
+* For now, hardcode the token in viewEvent page, ricky will send this token while the authorisation system is still in development.
+
+* Ricky has told me to enter this data into the database using Postman. This will generate a token that I am able to use for other aspects of development until the authorisation system is complete. I am learning about routing and the Postman application.
+http://localhost:2102/users
+payload to POST to /users :
+{
+    "firstName": "Catherine",
+    "lastName": "Moey",
+    "age": 43,
+    "email": "dehar@mail.com",
+    "tickets": [],
+    "_id": "622c7999bbb22cef792a1b9d",
+    "createdAt": "2022-03-12T10:44:41.819Z",
+    "updatedAt": "2022-03-12T10:44:41.819Z",
+    "__v": 0
+}
+
+token is the above encoded in base64:
+ewogICAgImZpcnN0TmFtZSI6ICJDYXRoZXJpbmUiLAogICAgImxhc3ROYW1lIjogIk1vZXkiLAogICAgImFnZSI6IDQzLAogICAgImVtYWlsIjogImRlaGFyQG1haWwuY29tIiwKICAgICJ0aWNrZXRzIjogW10sCiAgICAiX2lkIjogIjYyMmM3OTk5YmJiMjJjZWY3OTJhMWI5ZCIsCiAgICAiY3JlYXRlZEF0IjogIjIwMjItMDMtMTJUMTA6NDQ6NDEuODE5WiIsCiAgICAidXBkYXRlZEF0IjogIjIwMjItMDMtMTJUMTA6NDQ6NDEuODE5WiIsCiAgICAiX192IjogMAp9
+
+* Now that I know how tokens are generated and have access to a functional token myself, I can continue development and bridge the backend and frontend.
+
+* Note: to get parameters from the URL, use req.query
+
+* We had a standup where it was mentioned we should implement pagination wherever possible. I will look into this but for now I think I will focus on core features.
+
+* This is how to get information about an event from the backend.
+GETTING event info from ID:
+GET
+http://localhost:2102/event?token=ewogICAgImZpcnN0TmFtZSI6ICJDYXRoZXJpbmUiLAogICAgImxhc3ROYW1lIjogIk1vZXkiLAogICAgImFnZSI6IDQzLAogICAgImVtYWlsIjogImRlaGFyQG1haWwuY29tIiwKICAgICJ0aWNrZXRzIjogW10sCiAgICAiX2lkIjogIjYyMmM3OTk5YmJiMjJjZWY3OTJhMWI5ZCIsCiAgICAiY3JlYXRlZEF0IjogIjIwMjItMDMtMTJUMTA6NDQ6NDEuODE5WiIsCiAgICAidXBkYXRlZEF0IjogIjIwMjItMDMtMTJUMTA6NDQ6NDEuODE5WiIsCiAgICAiX192IjogMAp9&eid=622bf41bab2bcf50649220c1
+
+
+* Reinstalled dev files on second setup to view Ricky's branch. He has an example of fetching data from the backend that will be useful for me.
+
+* Learning about express API that is used to make interacting with URL parameters easier.
+
+* Had to install express in the frontend then update dependancies
+
+* look into styled components:
+example in header.tsx
+components/header
+Use styled components to reduce repetition in code, if any styling changes made in future, only need to update one variable as opposed to all elements.
+
+* Note: code used in homepage index.tsx to link correct event id:
+<Button value="default" shape="round" style={{ float: 'right' }} 
+    onClick={()=> {router.push('/viewEvent?eid='+(event._id))}}> 
+    {' '}
+    View{' '}
+</Button>
+
+
+* Steven has provided some useful links:
+Getting parameters from URL:
+https://www.sitepoint.com/get-url-parameters-with-javascript/
+Next API usage:
+https://nextjs.org/docs/basic-features/pages
+
+* I need to change event page from /viewEvent?eid=[eid] to /event/[eid]
+To do this I need to use Next API dynamic routes:
+https://nextjs.org/docs/routing/dynamic-routes
+
+* Learning about interfaces with typescript:
+https://www.typescriptlang.org/docs/handbook/interfaces.html
+
+* Fixed merge conflicts
+
+* Fixed UseEffect so router query is only called once router loads with Steven's help.
+
+
+-----------------------------------------------------------------------------------------------------
+WEEK 5:
+-----------------------------------------------------------------------------------------------------
+
+* Learning how to dynamically load content from backend json object for event page.
+
+* Got dynamic loading working, although getting warnings:
+Property 'title' does not exist on type 'EventInfoType[]'.ts(2339)
+Will need to ask about this.
+
+* Share Event button now correctly pulls from URL
+
+* Created new entry in database with less stub data to show event page.
+
+* Completed dynamic loading of content for event information. Once friend and discussion system is being worked on, the remaining dynamic loading can be implemented.
+
+* Merged with main, created a pull request.
+
+* Beginning work on ticket JP-20 - "As a customer, I want to book a ticket for a listed event. So I can attend the event."
+
+* Looked through Andrew's code on tickets, as I will need to connect his my ticket page to event details page.
+
+* Updated testticket code to make fetch request from backend 
+
+* book now button added to event page
+
+* modal added to event page
+
+* button that links to ticket page added
+
+* ticket page now uses dynamic routing to hold event id in url
+
+* ticket page backend interaction cleaned up a little
+
+* ticket page now show's host name
+
+* We had a standup meeting with the dev team tonight. Everyone is making good progress ahead of tomorrow's demo.
+
+* good useeffect tutorial
+https://dennyscott.io/use-effect-dependency-array/
+
+* Ticket backend implement, look in routes.ts for endpoints.
+
+* Event page "see my ticket" button now creates a new ticket object then redirects to ticket/[tid].
+
+* Ticket page now has ticket id in URL instead of event id. See ticket index.tsx for details.
+
+* Ticket data type has been temporarily simplified, but can/will have more data entries in the future as functionality is implemented.
+
+
+-----------------------------------------------------------------------------------------------------
+SPRINT 1 COMPLETED TASKS:
+TICKETS:
+JP-85 As a customer/prospective customer, I want to be able to go on an event page so I can view more details about the event
+JP-20 As a customer, I want to book a ticket for a listed event. So I can attend the event.
+JP-54 The event has its own page displaying the details of that event
+JP-55 There needs to be a "book ticket" button to purchase a ticket.
+* Implemented backend and routing for tickets.
+* Created the ticket page with dynamic routing, which Andrew was then able to complete the UI for.
+-----------------------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------------
+WEEK 6:
+-----------------------------------------------------------------------------------------------------
+* working on tickets
+- JP-80: As a customer, I want to be able to make a comment in the event page. So I can discuss about the event.
+- JP-82: As a customer, I want to be able to see comments on an event page, so I can reply and contribute to the discussion
+
+* Began researching viability of implementing reddit-style commenting for our project. Steven told me a cookie was waiting for me if I was able to do it. So I'm going to try my best!
+
+* Found a couple resources that should help guide this feature development:
+Proof-of-concept version of comment structure:
+- https://github.com/sloreti/reddit-like-comments
+Recursion in React:
+- https://coderrocketfuel.com/article/recursion-in-react-render-comments-with-nested-children
+
+* Implemented comment backend. Currently, this is the comment data structure:
+comment: {
+id
+event_id
+user_id
+score
+createdAt
+text
+parent_comment
+}
+
+* Been struggling with implementation of comment chaining. Re-thinking data structure.
+
+* As discussed, I first implemented the comment data structure with an event_id field. However, this is quite inefficient as it will require many calls to the backend. In order to save on computation time, I decided to add a comments field to the event data structure instead. This required a fairly extensive re-factoring of my existing code. 
+
+* The new comments data structure is as follows. Notably, it features nested comments to allow for comment chaining.
+
+comments: {
+    id
+    score
+    createdAt
+    text
+    user_id
+    comments: {}
+}
+
+* Considering the implemented of dev tools to help test and iterate on comments design. However, I'm not sure it's worth the development time right now.
+
+* Spent some time categorising backend requests into Postman collections for future ease of use and a smoother development experience.
+
+* Will need a way to delete comments. Look at cancelTicketController.
+
+* Learned how to update documents stored in mongo database using the findByIdAndUpdate() method. 
+NOTE: by default, this function returns a copy of the document BEFORE it was updated.
+For more more options, see documentation: 
+https://mongoosejs.com/docs/api/model.html#model_Model.findOneAndUpdate
+https://www.mongodb.com/docs/manual/reference/method/db.collection.findOneAndUpdate/
+
+* We use the PATCH request method to update existing data fields
+
+* Added DELETE request method for events
+
+* Added new routes to link the above request methods
+
+* Learning about how to use Styled Components. They are useful for cleaning up code and reducing repetition. I struggled with them at first because all my styled components would cause a (not very helpful) error message to be thrown. Turns out, all styled component names need to start with a capital letter.
+
+* Implemented recursive component rendering to load nested comments. Now the comments section is starting to look alive.
+
+* Using Ant Design, found arrow icons to act as voting buttons. Since they are SVG format, you can also change the colour very easily. These are some colours I am considering:
+Blue #7193ff
+Orange #ff4500
+Meetic Red #C43444
+
+* Made a first pass at styling the comments using styled components and ant design.
+
+* Updated comments test data to use real users from mongo database.
+
+* Implemented retrieval of user data from backing for each comment (to get user name from id).
+
+* Used Router to link username to user page. (user pages currently unimplemented)
+
+* Added the ability to copy the body text of a given comment by clicking on the "copy text" button.
+
+* Added how long ago the comment was made (for example "3 hours ago") by formatting the difference between the current time and the createdAt field. The logic for this took a bit of work to come together, but I'm very happy with the end result.
+
+* Added a popup/tooltip that shows the date a comment was made if hovering over the "3 days ago" text.
+
+* Added functionality to the "reply" button. It now conditionally renders the reply form to reply to an existing comment.
+
+* Created a page with dynamic routing for viewing a single user's profile. At the moment, we can only display basic information such as name, age and email. But as the user functionality continue to gets fledged out, this profile page will be able to display more dynamic content.
+
+* Added "save" and "cancel" buttons to reply form. The cancel button has been implemented, and will now hide the form.
+
+* I've been working on storing new comment data in the backend. At the moment, the data is successfully being sent to the backend with a POST request method, but at the moment I'm struggling with how to update that comments[] data structure to incorporate the new data.
+
+* We had a standup meeting. Everyone is making good progress.
+
+* I finished
+
+* Made a PR for my comment section branch, Steven has left some helpful comments on a couple things I should fix before merging to main. So I'll address those then begin work on the next thing.
+
+
+-----------------------------------------------------------------------------------------------------
+WEEK 7:
+-----------------------------------------------------------------------------------------------------
+
+* I have finished implementing the various smaller issues steven pointed out in his Pull Request review. Mostly this involved changing code to follow certain conventions set, or updating all fetch requests to use the new user authentication system.
+
+* It's been pointed out that we should probably have a way to delete comments. Due to the comment-chaining implementation, however, this poses a question: should deleting a comment also delete the comment's replies as well? Or should:
+    - the comment become anonymised
+    - the text deleted [comment deleted]
+I like the second method more, although it will require a little more work to implement. So I'll work on that now.
+
+* Added a "delete" button that will conditionally render on each comment if it was made by the currently logged in user.
+
+* Delete comment functionality is now fully implemented. Once again I found grappling with the backend to be the most challenging component of this process. But with regex and a little elbow grease even difficult tasks like this seem all the more possible.
+
+* Implemented the editing of your own comments. I ran into several road blocks while implementing this, but they were similar to the problems I had while working on the delete comment functionality, so thankfully it didn't take all afternoon.
+
+* Steven checked in and helped to point out some of the finishing touches required to merge the comment section to main. Various quality of life improvements have been made, including a maximum width to the text area, auto focussing on the input box, and a message that is displayed when the comment section is empty.
+
+* known issues:
+ - whitespace characters such as \n are not displayed (because data is passed through JSON.stringify)
+ - there is no indication that a comment has been edited (does not change the createdAt field)
+
+* With the most recent pull from main, some styling has broken. I have slapped some !important tags in the css code for styled components and that seems to have fixed it, but it feels like somewhat of a bandaid solution. In our last standup, it was mentioned that at some stage we will do a more thorough UI update so we will revisit this quirk soon.
+
+* I tried to implement comment text boxes resetting their values (to an empty string) after the user submits a comment. This way, if a user wished to leave multiple comments, they wouldn't need to delete the contents of their old comment before writing the new one. However, after some time tinkering with it, I was unable to complete this feature. Time willing, I will revisit it tomorrow.
+
+* Made several UI improvements and fixed a couple bugs for the comments system in the event view page.
+
+* Implemented ticket JP-84 "As a customer, I want to be able to see if any of my friends are going to a specific event, so I can ask them to meetup with me":
+  - made a new component "FriendGoing" to be able to dynamically render list of friends who are attending the same event. 
+  - the main logic for finding the list of friends attending the same event is handled in the event index page. Each user's ID is passed to the "FriendGoing" component as a prop, which is then fetched and rendered within that componenet.
+
+* Implemented capacity in the frontend "create event" page, the event schema and the create event function in the backend in order to show the maximum number of guests that can attend an event. 
+
+* The "Book Now" button now only renders if there is remaining capacity for an event.
+
+* Made some UI improvements to the event view page, including the addition of a particles divider that reinforces thematic consistency between the event view page and the homepage.
+
+* We had a standup meeting where everyone was able to share their progress. Things seem to be going well for everyone, and we are preparing for our second demo next tuesday.
+
+-----------------------------------------------------------------------------------------------------
+SPRINT 2 COMPLETED TASKS:
+TICKETS:
+JP-80 As a customer, I want to be able to make a comment in the event page. So I can discuss about the event.
+JP-82 As a customer, I want to be able to see comments on an event page, so I can stay up to date with the discussion about an event.
+JP-117 As a customer, I want to be able to edit my own comments in the event page. So I can fix mistakes or update my comments while discussing about the event.
+JP-118 As a customer, I want to be able to delete my own comments. So I can fix mistakes or maintain privacy where needed while discussing about the event.
+JP-119 As a customer, I want to be able to reply to comments made by other customers. So I can engage in more interactive discussions about the event.
+JP-120 You should be able to reply to any comment, including your own. It should be clear from the UI which comments are in reply to which.
+JP-121 Edit and Delete controls should only be available if the comment belongs to the logged in user.
+JP-122 It should be clear from the UI whether you are replying to a comment or editing your own, since the input forms for both are similar/identical.
+JP-123 You should be able to cancel: (a) leaving a comment, (b) making a reply, and (c) editing your own comment.
+JP-124 You should be able to see how long ago another comment was made and/or the date the comment was made.
+JP-125 You should be able to see who left a comment, and be able to access their user profile page from the comment.
+JP-84 As a customer, I want to be able to see if any of my friends are going to a specific event, so I can ask them to meetup with me
+-----------------------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------------
+Week 8:
+-----------------------------------------------------------------------------------------------------
+
+* My goal is to complete the ticket trade system before demo 2. I have spoken to the rest of the team about what we think the best approach for this system is, so I have a good idea of what to implement, I just now need to figure out how.
+
+* But first, a diversion. I recently added a particles container to the event view page, harkening back to the newly-added particles on the home page. We thought it would be cool to give the particles a parallax effect, which I have been looking to implement. While I have been able to successfully get the parallax effect to work for images, the particles container seems to not be bound to the bottom of its parent div, and is bleeding into the rest of the content as the user scrolls. I have to prioritise other functionality for now, so I will have to come back to this.
+
+* For ticket trading, the use case we are trying to address is when the capacity for an event is full but a user would still like to go, they have the option to request a ticket trade with a user who already has a ticket.
+
+* Added a modal that will show the list of users that are going to a specific event. The idea is that there will be an option next to each user to request a ticket trade with them. When clicking on this button, it will open up a new modal that will allow the logged in user to select which of their tickets they would like to trade. However, I have been having difficulty passing the data on which user the "trade ticket" button was clicked on to the parent event page component.
+
+* Thanks to a little syntax help from Steven, I am now able to pass data from child components to parent components, so I can continue working on the "Select ticket to trade" modal.
+
+* I have removed the option for a user to request a ticket trade with themselves.
+
+* Earlier I wrote about my struggles with the parallax effect. I have managed to fix the problem of the child component escaping the bottom of the parent div by adding a child div, which for some reason or another seems to constrain the parallax effect correctly. The documentation for this library is not the best.
+
+* Made a couple UI updates and changes to rendering logic, including fixing pluralisation for the event capacity (ie "1 spots left") and a "(you)" indicator in the guest list.
+
+* I have made substantial progress on the ticket trade system. When trading a ticket there are two users involved: the user offering their ticket and the user who's ticket is being requested. The majority of the frontend and UI components pertaining to the user offering their ticket is done and the user flow for making a ticket trade request is done. Therefore, feature JP-59 is done. Next I need to work on the user flow for the user who's ticket is being requested.
+
+* The ticket trade system is a little more involved than I first anticipated, so I will need to continue development next week. We will still be able to demonstrate the comments system I developed to Rachid, but the ticket trade system is too early in development for a demonstration when we have many other features to show off.
+
+
+-----------------------------------------------------------------------------------------------------
+WEEK 9:
+-----------------------------------------------------------------------------------------------------
+
+* A stretch goal of mine was to have our application running on a server so that all we need to share it is a link to the url. This would solve the problems our development team has been having with differing databases and tokens, as well as add an additional layer of professionalism to the final product. I have begun looking into companies that offer such services. 
+
+* I have purchased a small Virtual Private Server with the company OVH that should have more than enough computing power to run our small application. The server is hosted on the address: vps-9d685d55.vps.ovh.ca
+
+* I have purchased a domain name, meetic.site
+
+* I have changed the A records of the domain to connect it to the OVH server. Now all I need to do is wait for DNS propagation to work its magic and all of the developers should be able to access our application from their browser.
+
+* And it's live. meetic.site will show the user our application. This process was a great exercise for me to learn a little networking and how an application might be launched in the real world.
+
+* I am continuing work on the ticket trade system.
+
+* I began my implementation by adding a "ticketTrades" array to each user in the database. This will make it easy to display which incoming ticket trade requests are relevant to the logged in user and reduce processing required to handle ticket trade requests.
+
+* It has come to my attention that our current ticket data structure does not store who the ticket belongs to. Rather, there is a "tickets" field in each user that contains ticket IDs. This is proving to make implementing the ticket trade system difficult. I think I will need to update the database schemas for some of our existing data structures. If we were early into the project, this would be unlikely to cause many issues. However, since we are in the final week of development, I am weary about making structural changes like this. 
+
+* I realised that when a ticket is actually traded between users, and other active ticket trade request that involves either of those two tickets should be removed. However, with how I am currently working with ticket trade requests, this is becoming quite difficult and messy. In addition to my concerns in the previous entry, I think it's in my best interests to revert to a previous commit and re-implement what I have worked on so far before I get too far with a flawed data structure.
+
+* I have re-implemented ticket trades as an independent document of the database (that is, not a field of another document as before). The schema is as follows: each ticket trade request is now comprised of references to two other tickets in the database. One is the ticket being offered to trade and the other is the ticket being requested. If more information is needed I can change this data structure as needed.
+
+const ticketTradeRequestSchema = new mongoose.Schema({
+    offeredTicket:  {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ticket',
+        required: true
+    },
+    requestedTicket: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ticket',
+        required: true
+    }
+})
+
+* We had our weekly checkup with Rachid today. After some discussion, it was pointed out to us that we should not make our project publicly accessible until after the project has been marked. As such, I am discontinuing support for the VPS that I mentioned earlier this week.
+
+* Added several components and UI features to the "My Tickets" page to support ticket trade requests. You should be able to cancel or accept an incoming ticket trade requests so I have added buttons that will handle those user inputs.
+
+* After some thought, I think it would be better to have a confirmation step when accepting a ticket trade, similar to the confirmation step when a user makes a ticket trade request. I think a modal that features an overview of the two tickets being traded would be a good way to implement such a confirmation step. That way, the user must click on "View Request" then "Trade Tickets" which will reduce confusion and and avoid accidental, unreversible, ticket trades.
+
+* Added a modal in the "my tickets" to both view and act as a confirmation step when trading tickets as discussed. Luckily, I am able to re-use the MiniEventView component that I implemented last week for the event overview. I think the UI will still need some polish, but this is acceptable for now while the functionality is in progress.
+
+* Added the route "/usertickettrades" that will fetch all ticket trade requests involving the user specified in the params. This data is split into "incoming" and "outgoing" ticket trade requests, since each type of ticket trade request will need to be rendered differently on the "My Tickets" page.
+
+* I did a lot of work on the frontend and UI components for the ticket trade section of the "My Tickets" page. Next I need to add functionality to the "Decline" button and the actual trading of tickets.
+
+* I have completed the rest of the core functionality for ticket trades. Users are now able to see both incoming and outgoing ticket trade request. For each request the user is able to view the request, accept an incoming trade request, or decline it.
+
+* Throughout the implementation of the above features, I lost many hours to my interactions with backend methods and, specifically, identifying which mongo database method was appropriate with my use cases. After reading some of the mongo documentation, as well as consulting with my teammates, I was able to complete my implementation of the backend component of this feature set with minimal hiccups.
+
+
+
+-----------------------------------------------------------------------------------------------------
+WEEK 10:
+-----------------------------------------------------------------------------------------------------
+
+* I have updated several areas of the codebase to correctly render user profile pictures, such as in the navigation bar, event page and comments section. In addition I have made some minor UI changes to the event page, and have moved the comment section to below other components to provide more horizontal space in service of avoiding the feeling that the component was too confined.
+
+* As mentioned in week 6, a stretch goal of mine was to implement a voting and scoring system for the comments system I implemented in Sprint 2. At the time, I had to prioritise other core functionalities and move on to the implementation of the ticket trade request system. But now that I have found some time, I would like to revisit the comments system and implement the aforementioned features.
+
+* The greatest roadblock I encountered while working on the comments system in Sprint 2 was as a result of the nested nature of the comments object. As a refresher, this is what the comments object in an example comment section looks like: 
+
+comments: [
+    {
+      _id: 13,
+      points: 20,
+      createdAt: "2018-03-28T20:15:00.111Z",
+      text: "Hi Catherine, looking forward to it. Is there anything else we should bring?",
+      user: user3._id,
+      comments: [
+        {
+            _id: 27,
+            points: 30,
+            createdAt: "2018-03-28T20:16:00.112Z",
+            text: "I've got some speakers I can bring 😎",
+            user: user2._id,
+            comments: [
+            {
+                _id: 32,
+                points: 12,
+                createdAt: "2018-03-28T20:17:00.113Z",
+                text: "I'll bring my fire mixtapes then :)",
+                user: user5._id,
+                comments: [
+                // replies here
+                ]
+            }
+            ]
+        },
+        {
+          _id: 42,
+          points: 13,
+          createdAt: "2018-03-28T20:17:00.114Z",
+          text: "I'll be bringing a couple snacks and chocolate for the sweet tooths among us (sus)",
+          user: user4._id,
+          comments: [
+            // replies here
+          ]
+        }
+      ]
+    },
+    {
+      _id: 51,
+      points: 4,
+      createdAt: "2018-03-28T20:12:00.115Z",
+      text: "Sounds good. Looking forward to next weekend!",
+      user: user1._id,
+      comments: [
+        // replies here
+      ]
+    },
+    {
+        _id: 69,
+        points: 68,
+        createdAt: "2022-03-24T20:12:00.116Z",
+        text: "I got a couple spare bottles of soju. Anyone else bringing any drinks?",
+        user: user4._id,
+        comments: [
+            {
+                _id: 70,
+                points: 0,
+                createdAt: "2022-03-25T20:17:00.117Z",
+                text: "And I'll bring an extra esky in case we need it",
+                user: user3._id,
+                comments: [
+                  // replies here
+                ]
+            },
+            {
+                _id: 86,
+                points: 1,
+                createdAt: "2024-03-25T20:17:00.118Z",
+                text: "Yeah I've got some stuff to bring, might stop by Murphy's on the way over.",
+                user: user5._id,
+                comments: [
+                  // replies here
+                ]
+            }
+        ]
+    }
+  ],
+
+* Each comment has an id, points, createdAt, text and user field. However, each comment also has a "comments" field which is an array of more comment objects, each of which can contain children comments and so on.
+
+* During Sprint 2, I employed the use of recursive rendering to render this object in the event page. While this worked well for displaying the comments structure as per the above example, I decided at the time that implementation of the scoring/voting system would not be worthwhile if the user could not sort the comment section by score. At the time, sorting the comments was the bottleneck that prevented me from pursuing this feature set.
+
+* I have written an algorithm to recursively sort the comments data structure as per the above. In short the function sorts the children comments (replies) first then incrementally makes is way upwards through the data structure until it eventually sorts the root-level comments. I have implemented two sorting methods: you can now either sort by the score of the comments (highest to lowest), or the date that the comments were left (newest to oldest).
+
+const recursivelySortComments = (comments: any, sortMethod: string) => {
+    for (var i = 0; i < comments.length; i++) {
+        recursivelySortComments(comments[i].comments, sortMethod);
+        if (sortMethod === 'date') {
+            comments[i].comments.sort((a: any, b: any) => new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf());
+        }
+        if (sortMethod === 'score') {
+            comments[i].comments.sort((a: any, b: any) => b.points - a.points);
+        }
+    }
+}
+
+* With this hurdle out of the way, I am able to continue development on the comments voting system.
+
+* I have implemented arrows to act as the user's means of voting on a comment using icons from the ant design library. I have also made further improvements to UI elements for the comment section. As it so happens, changing the colour of these ant design icons dynamically is not trivial. I ended up needing to define a styled component within the body of the comment component and pass a useState object:
+
+const UpvoteIcon = styled(CaretUpOutlined)`
+font-size: 36px !important;
+color: ${upvoteColour} !important;
+`
+
+* Doing this, however, logs many warnings to the console that styled components should not be defined within the body of another component. Unfortunately, I was not able to find another more appropriate way to change the colour of these icons, so I pressed on with the current implementation method.
+
+* I did a lot of work today on the comment voting system. It is now virtually complete. I had a heart attack when, after I completed the voting system, other means of interacting with the comment section (that is, leaving a new comment, replying, editing, deleting etc.) were all broken. Luckily, this turned out to be a simple fix as a result of me changing a backend method without providing a proper reply status (eg. 200 OK). However, since it was late at night that I ran into this problem, I did not figure this out quickly.
+
+
+* Ultimately, I found the implementation of a voting system for the comment section to be very challenging, but very rewarding. I found the (in my opinion) very finicky usage of react useState and useEffect hooks to be the most demanding component of implementing this feature set after sorting comments was completed.
+
+* We had our final demo today. Unfortunately, my branch containing the updates to the voting system as discussed above were not merged with the main branch because my team did not want to risk something going wrong in the eleventh hour. While we were unable to demo these functionalities, I am very glad I was able to complete this stretch goal.
+
+* I have finished writing my sections of the final report, marking my final contributions to this project. I am very thankful to our tutor for being so understanding and empathic to my difficult situation this term, and wish everyone in my group well. Maybe we will run into each-other once again someday.
+
+-----------------------------------------------------------------------------------------------------
+SPRINT 3 COMPLETED TASKS:
+TICKETS:
+JP-59 As a customer, I want to be able to request ticket trades. So I can swap one of my tickets for another.
+JP-81 As a customer, I want to be able to accept ticket trades, so I can trade one of my tickets for another.
+* Hosted the project on a Virtual Private Server (shelved).
+* Implemented comment sorting and voting.
+* Various UI updates throughout the application.
+-----------------------------------------------------------------------------------------------------
+
